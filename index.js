@@ -2,6 +2,7 @@ const express = require("express");
 const nodemailer = require("nodemailer");
 const { google } = require("googleapis");
 const bodyParser = require("body-parser");
+const cors = require("cors");
 require("dotenv").config()
 
 //Google OAuth2 credentials
