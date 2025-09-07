@@ -22,18 +22,11 @@ oAuth2Client.setCredentials({ refresh_token: REFRESH_TOKEN });
 const app = express();
 
 // ADD CORS SUPPORT - INSERT THIS SECTION
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Accept');
-  
-  // Handle preflight requests
-  if (req.method === 'OPTIONS') {
-    return res.sendStatus(200);
-  }
-  
-  next();
-});
+app.use(cors({
+  origin: "*", // for testing; later replace with "https://your-vercel-app.vercel.app"
+  methods: ["GET", "POST", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"]
+}));
 
 app.use(bodyParser.json());
 
